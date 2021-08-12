@@ -7,3 +7,4 @@ Example frontend and backend using Ember.js, Python and Django
 - Build the backend to fit the frontend and use djangorestframework with djangorestframework-jsonapi
 - Once things work locally build a docker-compose to run the frontent, backend, and database with hot reloading
   - Maybe test the performance of hot reloading on Macos as mounting directories is supposedly a huge pain on top of the virtualization overhead... Might be something else we can try
+- Refactor the fronted to use the backend's API
