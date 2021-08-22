@@ -43,8 +43,7 @@ module('Integration | Component | map', function (hooks) {
     );
   });
 
-
-test('it updates the `src` attribute when the arguments change', async function (assert) {
+  test('it updates the `src` attribute when the arguments change', async function (assert) {
     this.setProperties({
       lat: 37.7749,
       lng: -122.4194,
@@ -127,5 +126,4 @@ test('it updates the `src` attribute when the arguments change', async function 
       .hasAttribute('width', '150')
       .hasAttribute('height', '120');
   });
-
 });
