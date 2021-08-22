@@ -9,23 +9,25 @@ module('Integration | Component | rentals', function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.rental1 = server.create('rental', {
-        id: 'grand-old-mansion',
-        title: 'Grand Old Mansion',
+    this.rental1 = this.server.create('rental', {
+      id: 'grand-old-mansion',
+      title: 'Grand Old Mansion',
     });
-    this.rental2 = server.create('rental', {
-        id: 'urban-living',
-        title: 'Urban Living',
+    this.rental2 = this.server.create('rental', {
+      id: 'urban-living',
+      title: 'Urban Living',
     });
-    this.rental3 = server.create('rental', {
-        id: 'downtown-charm',
-        title: 'Downtown Charm',
+    this.rental3 = this.server.create('rental', {
+      id: 'downtown-charm',
+      title: 'Downtown Charm',
     });
     this.store = this.owner.lookup('service:store');
   });
 
   test('it renders all given rental properties by default', async function (assert) {
-    await this.store.findAll('rental').then(rentals => this.set('rentals', rentals));
+    await this.store
+      .findAll('rental')
+      .then((rentals) => this.set('rentals', rentals));
     await render(hbs`<Rentals @rentals={{rentals}} />`);
 
     assert.dom('.rentals').exists();
@@ -48,7 +50,9 @@ module('Integration | Component | rentals', function (hooks) {
   });
 
   test('it updates the results according to the search query', async function (assert) {
-    await this.store.findAll('rental').then(rentals => this.set('rentals', rentals));
+    await this.store
+      .findAll('rental')
+      .then((rentals) => this.set('rentals', rentals));
     await render(hbs`<Rentals @rentals={{rentals}} />`);
 
     assert.dom('.rentals').exists();

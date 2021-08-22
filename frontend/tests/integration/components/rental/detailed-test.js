@@ -27,9 +27,13 @@ module('Integration | Component | rental/detailed', function (hooks) {
     assert.dom('article').hasClass('rental');
     assert.dom('article h3').containsText(`About ${this.rental.title}`);
     assert.dom('article .detail.owner').containsText(this.rental.owner);
-    assert.dom('article .detail.type').containsText(`${this.rental.type} – ${this.rental.category}`);
+    assert
+      .dom('article .detail.type')
+      .containsText(`${this.rental.type} – ${this.rental.category}`);
     assert.dom('article .detail.location').containsText(this.rental.city);
-    assert.dom('article .detail.description').containsText(this.rental.description);
+    assert
+      .dom('article .detail.description')
+      .containsText(this.rental.description);
     assert.dom('article .detail.bedrooms').containsText(this.rental.bedrooms);
     assert.dom('article .image').exists();
     assert.dom('article .map').exists();
