@@ -4,7 +4,6 @@ export default function () {
   });
 
   this.get('/rentals/:id', (schema, request) => {
-    console.log(schema.rentals.all());
     return schema.rentals.find(request.params.id);
   });
 }

@@ -28,7 +28,7 @@ module('Integration | Component | rentals', function (hooks) {
     await this.store
       .findAll('rental')
       .then((rentals) => this.set('rentals', rentals));
-    await render(hbs`<Rentals @rentals={{rentals}} />`);
+    await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
     assert.dom('.rentals input').exists();
@@ -53,7 +53,7 @@ module('Integration | Component | rentals', function (hooks) {
     await this.store
       .findAll('rental')
       .then((rentals) => this.set('rentals', rentals));
-    await render(hbs`<Rentals @rentals={{rentals}} />`);
+    await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
     assert.dom('.rentals input').exists();
