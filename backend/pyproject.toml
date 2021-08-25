@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "API for Ember.js Super Rentals Tutorial"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+Django = "^3.2.6"
+djangorestframework = "^3.12.4"
+djangorestframework-jsonapi = "^4.2.1"
+Markdown = "^3.3.4"
+django-filter = "^2.4.0"
+openapi = "^1.1.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+pytest = "^6.2.4"
+pytest-django = "^4.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
