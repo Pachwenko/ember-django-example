@@ -1,3 +1,8 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "backend.settings"
+addopts = "-ra --capture=no"
+python_files = "tests.py test_*.py *_tests.py"
+
 [tool.poetry]
 name = "backend"
 version = "0.1.0"
@@ -17,6 +22,7 @@ openapi = "^1.1.0"
 flake8 = "^3.9.2"
 pytest = "^6.2.4"
 pytest-django = "^4.4.0"
+factory-boy = "^3.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
