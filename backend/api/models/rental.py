@@ -1,25 +1,16 @@
 from django.db import models
+from django.db.models.fields.related import OneToOneField
 
-# 
-# export default Factory.extend({
-#   owner: faker.name.firstName,
-#   type: faker.random.word,
-#   city: faker.random.word,
-#   title: faker.random.word,
-#   category: faker.random.word,
-#   image: 'https://placeimg.com/600/600/arch', // faker just generates urls to this site, but doesn't have "arch"
-#   bedrooms: faker.datatype.number,
-#   description() {
-#     return faker.lorem.words(8);
-#   },
-#   location() {
-#     return {
-#       lat: 45.5175,
-#       lng: -122.6801,
-#     };
-#   },
-# });
+from api.models.location import Location
 
 
 class Rental(models.Model):
-    description = models.TextField(max_length=1024)
+    owner = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.TextField()
+    bedrooms = models.IntegerField(default=1)
+    location = OneToOneField(Location, on_delete=models.CASCADE)
