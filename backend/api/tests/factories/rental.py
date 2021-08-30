@@ -1,7 +1,9 @@
 import factory  # https://github.com/FactoryBoy/factory_boy
 from api.models.rental import Rental
 
-class RentalFactory(factory.Factory):
+from api.tests.factories.location import LocationFactory
+
+class RentalFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Rental
 
@@ -13,4 +15,4 @@ class RentalFactory(factory.Factory):
     description = factory.Faker('paragraph')
     image = factory.Faker('image_url', width=600, height=600)
     bedrooms = factory.Faker('pyint')
-    # TODO: add location
+    location = factory.SubFactory(LocationFactory)

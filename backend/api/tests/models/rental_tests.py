@@ -9,6 +9,7 @@ from api.tests.factories.location import LocationFactory
 
 @pytest.mark.django_db()
 def test_create_rental():
+    location = LocationFactory()
     RentalFactory(
         description='a description',
         owner='a owner',
@@ -18,4 +19,5 @@ def test_create_rental():
         category='a category',
         image='link to a image',
         bedrooms=4,
+        location=location
     )
