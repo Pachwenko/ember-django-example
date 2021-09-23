@@ -3,14 +3,16 @@ import pytest
 from api.tests.factories.rental import RentalFactory
 from api.tests.factories.location import LocationFactory
 
+
 # helps clean up JSON:API tests
-# TODO: mode this to some kind of test helpers file
+# TODO: move this to some kind of test helpers file
 def get_item_from_response(response_data, item_type, item_id) -> dict:
     _id = item_id if isinstance(item_id, str) else str(item_id)
     for item in response_data:
         if item['type'] == item_type and item['id'] == _id:
             return item
     return {}
+
 
 @pytest.mark.django_db()
 def test_get_rentals_returns_single_rental(client):
@@ -66,6 +68,7 @@ def test_get_rentals_returns_all_rentals(client):
     assert result_rental2['image'] == rental2.image
     assert result_rental2['bedrooms'] == rental2.bedrooms
 
+
 @pytest.mark.django_db()
 def test_get_rentals_returns_locations_in_included(client):
     rental = RentalFactory()
@@ -73,14 +76,19 @@ def test_get_rentals_returns_locations_in_included(client):
     assert 200 == response.status_code
     assert 1 == len(response.json()['included'])
 
-    result_rental1_location1 = get_item_from_response(response.json()['included'], 'Location', rental.location.pk)['attributes']
+    result_rental1_location1 = get_item_from_response(
+        response.json()['included'],
+        'Location',
+        rental.location.pk
+    )['attributes']
     assert result_rental1_location1['lat'] == str(round(rental.location.lat, 6))
     assert result_rental1_location1['lng'] == str(round(rental.location.lng, 6))
+
 
 @pytest.mark.django_db()
 def test_minimal_queries_with_many_relations(client, django_assert_num_queries):
     for i in range(10):
         RentalFactory()
     with django_assert_num_queries(2):
-        response = client.get(f'/api/rentals/')
+        response = client.get('/api/rentals/')
         assert 200 == response.status_code
