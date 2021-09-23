@@ -12,10 +12,9 @@ export default Factory.extend({
   description() {
     return faker.lorem.words(8);
   },
-  location() {
-    return {
-      lat: 45.5175,
-      lng: -122.6801,
-    };
+  afterCreate(post, server) {
+    post.update({
+      location: server.create('location'),
+    });
   },
 });
