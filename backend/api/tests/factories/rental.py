@@ -3,6 +3,7 @@ from api.models.rental import Rental
 
 from api.tests.factories.location import LocationFactory
 
+
 class RentalFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Rental

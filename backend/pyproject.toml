@@ -2,6 +2,7 @@
 DJANGO_SETTINGS_MODULE = "backend.settings"
 addopts = "-ra --capture=no"
 python_files = "tests.py test_*.py *_tests.py"
+flake8-max-line-length = "120"
 
 [tool.poetry]
 name = "backend"
@@ -21,7 +22,6 @@ django-cors-headers = "^3.8.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
-pytest = "^6.2.4"
 pytest-django = "^4.4.0"
 factory-boy = "^3.2.0"
 
