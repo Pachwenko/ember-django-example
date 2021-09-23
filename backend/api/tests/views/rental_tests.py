@@ -36,7 +36,6 @@ def test_get_rentals_returns_single_rental(client):
     assert result_rental1['description'] == rental1.description
     assert result_rental1['image'] == rental1.image
     assert result_rental1['bedrooms'] == rental1.bedrooms
-    assert False
 
 
 @pytest.mark.django_db()
