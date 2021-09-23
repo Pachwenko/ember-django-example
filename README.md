@@ -8,7 +8,7 @@ Example frontend and backend using Ember.js, Python and Django
 - [x] Add github action to run the frontend tests (make sure linting is part of the tests)
 - [x] Build the backend to fit the frontend's miragejs json-api spec using djangorestframework with djangorestframework-jsonapi
   - Test drive this
-- [ ] Refactor the fronted to use the backend's API
+- [x] Refactor the fronted to use the backend's API
 - [ ] Make a docker-compose to run the frontent, backend, and database with hot reloading
   - Maybe test the performance of hot reloading on Macos as mounting directories supposedly makes things very slow on top of the virtualization overhead... Might be something else we can try
   - Maybe explore full stack testing with something like cypress
