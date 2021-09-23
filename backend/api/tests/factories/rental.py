@@ -10,11 +10,9 @@ class RentalFactory(factory.django.DjangoModelFactory):
         model = Rental
 
     owner = factory.Faker('name')
-    type = factory.Faker('word')
     city = factory.Faker('word')
     title = factory.Faker('word')
-    category = factory.fuzzy.FuzzyChoice(['Standalone', 'Community'])
-    category = factory.Faker('word')
+    category = factory.fuzzy.FuzzyChoice([x[0] for x in Rental.CATEGORY_CHOICES])
     description = factory.Faker('paragraph')
     image = factory.Faker('image_url', width=600, height=600)
     bedrooms = factory.Faker('pyint')

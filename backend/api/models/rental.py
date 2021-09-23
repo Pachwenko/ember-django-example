@@ -5,15 +5,18 @@ from api.models.location import Location
 
 
 class Rental(models.Model):
-    STANDALONE = 'Standalone'
-    COMMUNITY = 'Community'
+    HOUSE = 'House'
+    CONDO = 'Condo'
+    TOWNHOUSE = 'Townhouse'
+    APARTMENT = 'Apartmeny'
     CATEGORY_CHOICES = [
-        (STANDALONE, 'Standalone'),
-        (COMMUNITY, 'Community')
+        (HOUSE, HOUSE),
+        (CONDO, CONDO),
+        (TOWNHOUSE, TOWNHOUSE),
+        (APARTMENT, APARTMENT)
     ]
 
     owner = models.CharField(max_length=255)
-    type = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=255, choices=CATEGORY_CHOICES)

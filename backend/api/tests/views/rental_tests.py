@@ -29,7 +29,6 @@ def test_get_rentals_returns_single_rental(client):
 
     result_rental1 = response.json()['data']['attributes']
     assert result_rental1['owner'] == rental1.owner
-    assert result_rental1['type'] == rental1.type
     assert result_rental1['city'] == rental1.city
     assert result_rental1['title'] == rental1.title
     assert result_rental1['category'] == rental1.category
@@ -50,7 +49,6 @@ def test_get_rentals_returns_all_rentals(client):
 
     result_rental1 = get_item_from_response(response.json()['data'], 'Rental', rental1.pk)['attributes']
     assert result_rental1['owner'] == rental1.owner
-    assert result_rental1['type'] == rental1.type
     assert result_rental1['city'] == rental1.city
     assert result_rental1['title'] == rental1.title
     assert result_rental1['category'] == rental1.category
@@ -60,7 +58,6 @@ def test_get_rentals_returns_all_rentals(client):
 
     result_rental2 = get_item_from_response(response.json()['data'], 'Rental', rental2.pk)['attributes']
     assert result_rental2['owner'] == rental2.owner
-    assert result_rental2['type'] == rental2.type
     assert result_rental2['city'] == rental2.city
     assert result_rental2['title'] == rental2.title
     assert result_rental2['category'] == rental2.category

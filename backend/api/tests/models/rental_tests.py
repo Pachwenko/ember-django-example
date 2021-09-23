@@ -13,10 +13,9 @@ def test_create_rental():
     RentalFactory(
         description='a description',
         owner='a owner',
-        type='a type',
         city='a city',
         title='a title',
-        category='a category',
+        category='House',
         image='link to a image',
         bedrooms=4,
         location=location
