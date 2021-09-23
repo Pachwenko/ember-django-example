@@ -17,6 +17,7 @@ djangorestframework-jsonapi = "^4.2.1"
 Markdown = "^3.3.4"
 django-filter = "^2.4.0"
 openapi = "^1.1.0"
+django-cors-headers = "^3.8.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
