@@ -4,7 +4,7 @@ from api.tests.factories.rental import RentalFactory
 from api.tests.factories.location import LocationFactory
 
 # helps clean up JSON:API tests
-# TODO: mode this to some kind of test helpers file
+# TODO: move this to some kind of test helpers file
 def get_item_from_response(response_data, item_type, item_id) -> dict:
     _id = item_id if isinstance(item_id, str) else str(item_id)
     for item in response_data:
@@ -34,6 +34,7 @@ def test_get_rentals_returns_single_rental(client):
     assert result_rental1['description'] == rental1.description
     assert result_rental1['image'] == rental1.image
     assert result_rental1['bedrooms'] == rental1.bedrooms
+    assert False
 
 
 @pytest.mark.django_db()
