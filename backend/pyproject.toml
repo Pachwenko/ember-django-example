@@ -2,7 +2,6 @@
 DJANGO_SETTINGS_MODULE = "backend.settings"
 addopts = "-ra --capture=no"
 python_files = "tests.py test_*.py *_tests.py"
-flake8-max-line-length = "120"
 
 [tool.poetry]
 name = "backend"
