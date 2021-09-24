@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  emberjs:
+    build:
+      context: ./frontend
+      target: development
+    volumes:
+      - ./frontend:/code
+    command: npm run start
+    ports:
+      - 4200:4200
+    environment:
+      NODE_ENV: development
+  django:
+    build:
+      context: ./backend
+      target: development
+    volumes:
+      - ./backend:/code
+    command: >
+      sh -c "poetry run python manage.py migrate &&
+             poetry run python manage.py --loaddata initial-data.json
+             poetry run python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    environment:
+      PYTHON_ENV: development
