@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  emberjs:
+  frontend:
     build:
       context: ./frontend
       target: development
@@ -11,7 +11,7 @@ services:
       - 4200:4200
     environment:
       NODE_ENV: development
-  django:
+  backend:
     build:
       context: ./backend
       target: development
