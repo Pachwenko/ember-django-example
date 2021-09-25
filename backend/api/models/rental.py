@@ -8,12 +8,14 @@ class Rental(models.Model):
     HOUSE = 'House'
     CONDO = 'Condo'
     TOWNHOUSE = 'Townhouse'
-    APARTMENT = 'Apartmeny'
+    APARTMENT = 'Apartment'
+    ESTATE = 'Estate'
     CATEGORY_CHOICES = [
         (HOUSE, HOUSE),
         (CONDO, CONDO),
         (TOWNHOUSE, TOWNHOUSE),
-        (APARTMENT, APARTMENT)
+        (APARTMENT, APARTMENT),
+        (ESTATE, ESTATE),
     ]
 
     owner = models.CharField(max_length=255)

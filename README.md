@@ -1,15 +1,15 @@
 # ember-django-example
 Example frontend and backend using Ember.js, Python and Django
 
-## Gameplan
+This is supposed to be a simple application to demonstrate a full stack web application using Ember.js with Python + Django. It is based upon the [official ember tutorial](https://guides.emberjs.com/release/tutorial/part-1/).
 
-- [x] Build a simple frontend using the official ember [tutorial](https://guides.emberjs.com/release/tutorial/part-1/)
-- [x] Refactor the frontend to use miragejs
-- [x] Add github action to run the frontend tests (make sure linting is part of the tests)
-- [x] Build the backend to fit the frontend's miragejs json-api spec using djangorestframework with djangorestframework-jsonapi
-  - Test drive this
-- [x] Refactor the fronted to use the backend's API
-- [ ] Make a docker-compose to run the frontent, backend, and database with hot reloading
-  - Maybe test the performance of hot reloading on Macos as mounting directories supposedly makes things very slow on top of the virtualization overhead... Might be something else we can try
-  - Maybe explore full stack testing with something like cypress
-- [ ] Update docs like this readme, add individual readmes for the frontend and back ( make sure to include non-docker usage stuff )
+The frontent connects to the backend using [Ember Data's JSONAPI](https://guides.emberjs.com/release/models/customizing-adapters/).
+
+For more info see the README for the [frontend](frontend/README.md) or [backend](backend/README).
+
+
+## Running locally
+
+To run the full stack at once the easiest way is with [Docker](https://docs.docker.com/get-started/). With docker installed you can run (in the this folder) `docker-compose up`. This will automatically reload upon any changes. If you just want to run the backend for example you can do `docker-compose up backend`.
+
+Otherwise you will need to run the frontend and backend simultaneously. Presently the backend uses sqlite so you do not need to run the database.
