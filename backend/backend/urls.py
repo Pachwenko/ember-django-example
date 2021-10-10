@@ -15,16 +15,31 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from rest_framework import routers
+from rest_framework.schemas import get_schema_view
 
 from api.views.rental import RentalViewSet
+
+
+api_doc_urls = [
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger-ui.html',
+        extra_context={'schema_url':'openapi-schema'}
+    ), name='swagger-ui'),
+]
 
 api_router = routers.SimpleRouter()
 api_router.register(r'api/rentals', RentalViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
-]
+    path('api-auth/', include('rest_framework.urls')),
+    path('openapi', get_schema_view(
+        title="Ember Django Example API",
+        description="API for Super Rentals",
+        version="1.0.0"
+    ), name='openapi-schema'),
+] + api_doc_urls
 
 urlpatterns += api_router.urls
