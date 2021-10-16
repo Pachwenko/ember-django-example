@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,17 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)tg)%he#a4ovp3%@4#m*u7m_#s%sni6npd+m&n(zt#zh_ti%!h'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dont use me in production')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://localhost:4200",
-]
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -84,8 +83,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.environ.get('RDS_DB_HOST', '127.0.0.1'),
+        'NAME': os.environ.get('RDS_DB_NAME', 'zappa_ember_django_example'),
+        'USER': os.environ.get('RDS_DB_USER', 'zappa_ember_django_example'),
+        'PASSWORD': os.environ.get('RDS_DB_PASSWORD', 'password'),
+        'PORT': os.environ.get('RDS_DB_PORT', '3306'),
     }
 }
 
@@ -166,3 +169,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Fake PyMySQL's version and install as MySQLdb
+# https://adamj.eu/tech/2020/02/04/how-to-use-pymysql-with-django/
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
