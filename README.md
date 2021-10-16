@@ -15,6 +15,7 @@ This project has a few branches you can check out:
 
 - [main](https://github.com/Pachwenko/ember-django-example/tree/main) This is supposed to be a minimal application that's easy to tinker with and understand.
 - [cypress](https://github.com/Pachwenko/ember-django-example/tree/cypress) Has high level integration tests. Cypress is a much more enjoyable test runner/writer than Ember's default of testem.
+- [zappa](https://github.com/Pachwenko/ember-django-example/tree/zappa-deployed) This branch deploys the API using [zappa](https://github.com/zappa/Zappa) to [AWS Lambda](https://aws.amazon.com/lambda/).
 
 
 ## Running locally
