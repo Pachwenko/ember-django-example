@@ -1,17 +1,19 @@
-FROM node:10 as base
+FROM node:14
 
 WORKDIR /code
 COPY package.json ./
 COPY package-lock.json ./
 EXPOSE 4200
 
-FROM base as production
-ENV NODE_ENV=production
-RUN npm ci
-COPY . /code
-CMD ["npm", "run", "build"]
+# update system
+RUN apt update && apt upgrade -y
 
-FROM base as development
+# Install google-chrome for ember tests
+RUN \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt install ./google-chrome-stable_current_amd64.deb -y
+
+ENV CI=true
 ENV NODE_ENV=development
 RUN npm install
 COPY . /code

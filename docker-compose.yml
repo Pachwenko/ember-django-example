@@ -3,7 +3,6 @@ services:
   frontend:
     build:
       context: ./frontend
-      target: development
     volumes:
       - ./frontend:/code
     command: npm run start
@@ -14,18 +13,11 @@ services:
   backend:
     build:
       context: ./backend
-      target: development
     volumes:
       - ./backend:/code
     command: >
-      sh -c "poetry run python manage.py createsuperuser --noinput;
-            poetry run python manage.py migrate;
+      sh -c "poetry run python manage.py migrate;
             poetry run python manage.py loaddata initial-data.json;
             poetry run python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
-    environment:
-      PYTHON_ENV: development
-      DJANGO_SUPERUSER_PASSWORD: admin 
-      DJANGO_SUPERUSER_USERNAME: admin
-      DJANGO_SUPERUSER_EMAIL: admin@example.com
