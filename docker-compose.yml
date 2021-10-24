@@ -21,3 +21,21 @@ services:
             poetry run python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
+    environment:
+      DEBUG: True
+      DB_HOST: db
+      DB_NAME: ember_django_example
+      DB_USER: ember_django_example
+      DB_PASSWORD: password
+      DB_PORT: 5432
+      SECRET_KEY: "dont use me in production"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=ember_django_example
+      - POSTGRES_USER=ember_django_example
+      - POSTGRES_PASSWORD=password
