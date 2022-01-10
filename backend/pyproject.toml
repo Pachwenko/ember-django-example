@@ -1,5 +1,5 @@
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "backend.settings"
+DJANGO_SETTINGS_MODULE = "project.settings"
 addopts = "-ra --capture=no"
 python_files = "tests.py test_*.py *_tests.py"
 
@@ -10,10 +10,10 @@ description = "API for Ember.js Super Rentals Tutorial"
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-Django = "^3.2.6"
-djangorestframework = "^3.12.4"
-djangorestframework-jsonapi = "^4.2.1"
+python = "^3.8"
+Django = "^4"
+djangorestframework = "^3"
+djangorestframework-jsonapi = "^5"
 Markdown = "^3.3.4"
 django-filter = "^2.4.0"
 openapi = "^1.1.0"
