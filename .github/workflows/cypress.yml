@@ -12,9 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Start servers in the background
-        run: docker-compose up -d
+        run: docker-compose up &
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           working-directory: acceptance-tests
           wait-on: 'http://localhost:4200' 
+          timeout-minutes: 5
