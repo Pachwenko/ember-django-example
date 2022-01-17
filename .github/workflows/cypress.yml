@@ -17,5 +17,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: acceptance-tests
-          wait-on: 'http://localhost:4200' 
-          timeout-minutes: 5
+          wait-on: 'http://localhost:4200, http://localhost:8000'
+          wait-on-timeout: 300
