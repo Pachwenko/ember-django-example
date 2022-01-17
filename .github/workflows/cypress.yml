@@ -17,4 +17,4 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: acceptance-tests
-          # wait-on: 'http://localhost:4200' 
+          wait-on: 'http://localhost:4200' 
