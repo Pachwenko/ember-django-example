@@ -19,6 +19,12 @@
 # ember-try
 /.node_modules.ember-try/
 /bower.json.ember-try
+/npm-shrinkwrap.json.ember-try
 /package.json.ember-try
+<<<<<<< HEAD
 
 /mirage/mirage
+=======
+/package-lock.json.ember-try
+/yarn.lock.ember-try
+>>>>>>> 7191b8c... v3.27.0...v4.1.0
