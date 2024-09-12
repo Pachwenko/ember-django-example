@@ -11,6 +11,7 @@ services:
     environment:
       NODE_ENV: development
   backend:
+    image: backend
     build:
       context: ./backend
     volumes:
@@ -21,3 +22,18 @@ services:
             poetry run python manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
+  test-backend:
+    image: backend
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/code
+    command: >
+      sh -c "poetry run python manage.py test"
+  debug-backend:
+    image: backend
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/code
+    command: bash
